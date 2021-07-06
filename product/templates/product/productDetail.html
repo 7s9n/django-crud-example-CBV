@@ -1,0 +1,25 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+  <div class="page-header">
+    <h1 class="my-4"> Detail-
+      <small>{{product.name}}</small>
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Name: </strong>{{product.name}}</li>
+        <li class="list-group-item"><strong>Description: </strong>{{product.description}}</li>
+        <li class="list-group-item"><strong>Price: </strong>{{product.price}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <a href="{% url 'update-product' product.id%}" class="btn btn-info">Update</a>
+      <a href="{% url 'delete-product' product.id%}" class="btn btn-danger">Delete</a>
+      <a href="{% url 'home-page'%}" class="btn btn-secondary">Back</a>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'product/base.html' %}
+{% block content %}
+  <div class="page-header">
+    <h1 class="my-4">
+      <small>Product List</small>
+    </h1>
+  </div>
+  <div class="row" style="max-height:300px;overflow: auto;">
+    {% if products %}
+      <div class="col-12">
+        <table class="table table-bordered table-hover text-center" >
+          <caption>Product List</caption>
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Desciption</th>
+              <th scope="col">Price</th>
+              <th scope="col">View</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+              <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+                <td><a href="{% url 'view-product' product.id %}"><button type="button" class="btn btn-outline-primary btn-sm">View</button></a></td>
+                <td><a href="{% url 'delete-product' product.pk %}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="col-12">
+        <div class="alert alert-warning" role="alert">
+          <p>There is no product, yet. But if you want, you can add from <a class="badge badge-info" href="{% url 'create-product' %}"><strong>here.</strong></a></p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock content %}

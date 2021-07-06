@@ -1,0 +1,22 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+    <div class="page-header">
+      <h1 class="my-4"> Delete-
+        <small>{{product.name}}</small>
+      </h1>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <form class="" action="" method="post">
+          {% csrf_token  %}
+          <div class="alert alert-warning" role="alert">
+            <button type="button" class="close" aria-hidden="true" data-dismiss="alert">&times</button>
+            <p>Are you sure you want to delete {{product}}</p>
+            <input type="submit" class="btn btn-danger" value="Delete">
+            <a href="{% url 'home-page' %}" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock content %}
