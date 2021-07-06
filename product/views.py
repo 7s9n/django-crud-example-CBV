@@ -1,5 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy , reverse
 from django.views.generic import (
     ListView,
     DetailView,
@@ -36,6 +36,10 @@ class ProductUpdateView(SuccessMessageMixin , UpdateView):
     # success_url = reverse_lazy('home-page')
     success_message = 'Product successfully updated!'
     template_name = 'product/productForm.html'
+
+    #i can use this instead of get_absolute_url in the model
+    def get_success_url(self):
+        return reverse_lazy('view-product' , kwargs={'pk':self.object.pk})
 
 class ProductDeleteView(SuccessMessageMixin , DeleteView):
     model = Product
